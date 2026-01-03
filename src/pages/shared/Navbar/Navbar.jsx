@@ -1,19 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router";
 import ParcelShiftLogo from "../ParcelShiftLogo/ParcelShiftLogo";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user } = useAuth();
+
   const navItems = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/about">About Us</NavLink>
+        <NavLink to="/coverage">Coverage</NavLink>
       </li>
-      <li>
-        <NavLink to="/contact">Contact Us</NavLink>
-      </li>
+
+      {user && (
+        <li>
+          <NavLink to="/login">LogOut</NavLink>
+        </li>
+      )}
     </>
   );
   return (
